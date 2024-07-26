@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+{% block content %}
+<br>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    .modal-content {
+      -webkit-animation: animatezoom 0.6s;
+      animation: animatezoom 0.6s;
+    }
+
+    @-webkit-keyframes animatezoom {
+      from { -webkit-transform: scale(0); }
+      to { -webkit-transform: scale(1); }
+    }
+
+    @keyframes animatezoom {
+      from { transform: scale(0); }
+      to { transform: scale(1); }
+    }
+
+    .modal .avatar {
+      width: 100px;
+      border-radius: 50%;
+    }
+
+    .close {
+      position: absolute;
+      right: 25px;
+      top: 0;
+      color: #000;
+      font-size: 35px;
+      font-weight: bold;
+    }
+
+    body, html {
+    height: 100%;
+    line-height: 1.8;
+    background-image: url("https://static.vecteezy.com/system/resources/previews/008/627/740/non_2x/female-student-listening-webinar-online-flat-illustration-cartoon-people-at-training-video-conference-or-lecture-computer-study-and-education-concept-vector.jpg");
+    background-size: cover; /* Cover the entire background */
+    background-repeat: no-repeat; /* Do not repeat the background image */
+    background-position: center; /* Center the background image */
+}
+
+    .close:hover,
+    .close:focus {
+      color: red;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 300px) {
+      .cancelbtn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container text-center mt-5">
+    <h2>Login Form</h2>
+    <button class="btn btn-primary" onclick="document.getElementById('id01').style.display='block'">Login</button>
+  </div>
+
+  <div id="id01" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close" onclick="document.getElementById('id01').style.display='none'">&times;</span>
+        </div>
+        <div class="modal-body text-center">
+          <img src="https://media.istockphoto.com/id/1411321556/video/office-workers-characters-animation-co-working-space-team-work-colleagues-woman-working-at.jpg?s=640x640&k=20&c=cg-gkSbw6ceoVyYuiSVq86I1LYnU5eVfxJPrDhnSxGQ=" alt="Avatar" class="avatar mb-4">
+          <form class="animate" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+          </form>
+        </div>
+        <div class="modal-footer" style="background-color:#f1f1f1">
+          <button type="button" class="btn btn-secondary" onclick="document.getElementById('id01').style.display='none'">Cancel</button>
+          <span class="psw ml-auto">Forgot <a href="#">password?</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var modal = document.getElementById('id01');
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+  </script>
+</body>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}
+

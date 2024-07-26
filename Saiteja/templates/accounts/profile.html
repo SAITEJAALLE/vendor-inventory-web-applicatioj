@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Profile</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- Custom styles -->
+<style>
+    .profile-container {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    .profile-info {
+        margin-bottom: 20px;
+    }
+    .profile-info p {
+        margin-bottom: 10px;
+    }
+    #profile-image {
+        max-width: 100%; /* Ensure the image doesn't exceed its container */
+        height: auto; /* Maintain aspect ratio */
+        max-height: 200px; /* Set a maximum height for the image */
+        display: block; /* Ensures the image is centered */
+        margin: 0 auto; /* Centers the image horizontally */
+    }
+</style>
+</head>
+<br>
+<body>
+<div class="container">
+    <div class="profile-container">
+        <h2 class="text-center mb-4">Profile</h2>
+        <img src="https://png.pngtree.com/png-clipart/20231019/original/pngtree-user-profile-avatar-png-image_13369988.png" alt="no_image" class="img-fluid" id="profile-image">
+        <div class="profile-info">
+            <p><strong>Username:</strong> {{ profile.user.username }} </p>
+            <p><strong>Email:</strong> {{ profile.user.email }}</p>
+            {% if user.is_vendor %}
+            <p><strong>Company Name:</strong> {{ profile.company_name }}</p>
+            <p><strong>Website Link:</strong> {{ profile.website_link }}</p>
+            <p><strong>Phone Number:</strong> {{ profile.phone_number }} </p>
+            <p><strong>Address:</strong> {{ profile.address }} </p>
+            {% endif %}
+        </div>
+        
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies (jQuery, Popper.js) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<br>
+{% endblock %}

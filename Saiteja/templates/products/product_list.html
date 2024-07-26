@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Product List{% endblock %}
+
+{% block content %}
+<title>Product List</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<!-- Custom styles -->
+<style>
+    .product-list {
+        max-width: 800px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    .search-container {
+        margin-bottom: 20px;
+    }
+    .product-item {
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 5px;
+    }
+    .order-btn {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+    #products-image {
+        max-width: 100%; /* Ensure the image doesn't exceed its container */
+        height: auto; /* Maintain aspect ratio */
+        max-height: 200px; /* Set a maximum height for the image */
+        display: block; /* Ensures the image is centered */
+        margin: 0 auto; /* Centers the image horizontally */
+    }
+    .product-image {
+        max-width: 100%; /* Ensure the image fits within its container */
+        height: auto; /* Maintain aspect ratio */
+        border-radius: 5px; /* Optional: add rounded corners */
+    }
+</style>
+
+<div class="container">
+    <div class="product-list">
+        <h1 class="text-center mb-4">List of Products</h1>
+        <img src="https://media.istockphoto.com/id/1318981847/vector/young-female-smiling-love-to-read-many-books.jpg?s=612x612&w=0&k=20&c=n9CCHx1jGIaCkVkyYpoUcjzafykBKE36NSiHQJwmtu4=" alt="Product Banner" class="img-fluid" id="products-image">
+        <br><br>
+        <form method="GET" action="{% url 'product_list' %}" class="mb-4">
+            <input type="text" name="search" placeholder="Search products" class="form-control" value="{{ search_query }}">
+            <button type="submit" class="btn btn-primary mt-2">Search</button>
+        </form>
+        
+        {% for product in products %}
+        <div class="product-item">
+            {% if product.image %}
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-image mb-3">
+            {% endif %}
+            <h4 class="mb-3">Product Name: {{ product.name }}</h4>
+            <p class="mb-2"><b>Product Description: </b>{{ product.description }}</p>
+            <p class="mb-2"><b>Price: ${{ product.price }} </b></p> <br>
+            <a href="{% url 'order_product' product.id %}" class="btn btn-primary">Order this product</a>
+        </div>
+        {% endfor %}
+        
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies (jQuery, Popper.js) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

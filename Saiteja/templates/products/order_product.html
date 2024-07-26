@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Order Product{% endblock %}
+
+{% block content %}
+<title>Order Product</title>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  body{
+      background-image: url("pic1.jpg");
+  }
+  .form-group, h1 {
+      color: rgb(5, 146, 146);
+     
+  }
+  .card-body {
+      background-color: bisque;
+  }
+
+</style>
+</head>
+<body>
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-header">
+      <div class="row align-items-center">
+        <div class="col-md-6 text-center">
+          <h1><b>Order Product</b></h1>
+        </div>
+        <div class="col-md-6 text-center">
+          <img src="https://media.istockphoto.com/id/1161984380/photo/close-up-woman-hand-using-phone-and-credit-card-for-online-shopping-and-payment-concept.jpg?s=612x612&w=0&k=20&c=Ywk1VtWy970hqZckPNpkVqVERrTGZ-0ObxtFd_Ubzqc=" class="img-fluid" alt="Shopping Image">
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <form method="post" align = "center">
+        {% csrf_token %}
+        {{ form.as_p }}
+            <!-- Add more options as needed -->
+            <button class = "btn btn_primary btn-success" type="submit">Place Order</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS and dependencies (jQuery and Popper.js) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

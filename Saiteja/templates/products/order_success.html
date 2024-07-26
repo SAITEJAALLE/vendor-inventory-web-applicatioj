@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Order Success{% endblock %}
+
+{% block content %}
+<title>Order Successful</title>
+<!-- Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+  body{
+      background-image: url("pic1.jpg");
+  }
+  #order-sucessful-image {
+          max-width: 100%; /* Ensure the image doesn't exceed its container */
+          height: auto; /* Maintain aspect ratio */
+          max-height: 200px; /* Set a maximum height for the image */
+          display: block; /* Ensures the image is centered */
+          margin: 0 auto; /* Centers the image horizontally */
+      }
+</style>
+</head>
+<body>
+<div class="container mt-5">
+  <div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Order Successful!</h4>
+    <img src="https://cdni.iconscout.com/illustration/premium/thumb/order-confirmed-7464607-6110040.png?f=webp" alt="no_image" class="img-fluid" id="order-sucessful-image">
+    <p>Your order has been successfully placed. Thank you for shopping with us!</p>
+    <hr>
+    <p class="mb-0">You will receive an email confirmation shortly.</p>
+    <a href="{% url 'product_list' %}">Back to products</a>
+  </div>
+</div>
+
+<!-- Bootstrap JS and dependencies (jQuery and Popper.js) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+{% endblock %}
